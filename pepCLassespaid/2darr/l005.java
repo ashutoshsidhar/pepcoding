@@ -60,6 +60,10 @@ public class l005{
         }
         return newarr;
     }
+    public static void spiraltrav(int[][] arr){
+        int n = arr.length;
+        
+    }
     public static void main(String[] args) throws Exception{
         int n = scn.nextInt();
         int m = scn.nextInt();
