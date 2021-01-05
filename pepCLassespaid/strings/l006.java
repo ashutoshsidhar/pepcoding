@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+
 public class l006{
     public static boolean ispalindrome(String str ){
         int si = 0 , ei = str.length() - 1 ;
         while( si < ei ){
-            if(str.charAt(si) != str.charAt(ei)) return false ;
+            if(str.charAt(si++) != str.charAt(ei--)) return false ;
         }
         return true ;
     }
@@ -41,7 +43,7 @@ public class l006{
         StringBuilder sb = new StringBuilder();
         sb.append(str.charAt(0));
         for(int i = 1 ; i <= str.length() ; i++ ){
-            int count = 1 ;
+            int count = 1;
             while( i < str.length() && str.charAt(i - 1) == str.charAt(i) ){
                 count ++ ;
                 i ++ ;
@@ -51,18 +53,41 @@ public class l006{
         }
         return sb.toString();
     }
-    public static String togglestring(String str){
+    public static String toggle(String str) {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0 ; i < str.length(); i++ ){
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
-            if(ch >= 'a' && ch <= 'z'){
-                sb.append(ch + 'A' - 'a' );
-            }
-            else {
-                sb.append(ch + 'a' - 'A' );
+            if (ch >= 'a' && ch <= 'z')
+                sb.append((char) (ch - 'a' + 'A'));
+            else
+                sb.append((char) (ch - 'A' + 'a'));
+        }
+
+        return sb.toString();
+    }
+    public static String stringdiff(String str){
+        if(str.length() <= 1) return str;
+        StringBuilder sb = new StringBuilder();
+        sb.append(str.charAt(0));
+        for(int i = 1 ; i < str.length() ; i++ ){
+            char ch1 = str.charAt(i - 1);
+            char ch2 = str.charAt(i);
+            sb.append(ch2 - ch1);
+            sb.append(ch2);
+        }
+        return sb.toString();
+    }
+    public static ArrayList<String> subseqe(String str){
+        ArrayList<String> ans = new ArrayList<>();
+        ans.add("");
+        for(int i = 0 ; i < str.length() ; i++){
+            char ch = str.charAt(i);
+            int size = ans.size();
+            for(int j = 0 ; j < size ; j++ ){
+                ans.add(ans.get(j) + ch);
             }
         }
-       return sb.toString();
+        return ans;
     }
     
 

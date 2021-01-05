@@ -4,7 +4,7 @@ using namespace std;
 bool ispalindrome(string str ){
     int si = 0 , ei = str.length() - 1 ;
     while( si < ei ){
-        if(str[si] != str[ei]) return false ;
+        if(str[si++] != str[ei--]) return false ;
     }
     return true ;
 }
@@ -85,3 +85,31 @@ string togglestring(string str){
     }
     return s ;
 }
+string stringdiff(string str)
+{
+    if (str.length() <= 1)
+        return str;
+    string ans = "";
+    ans += str[0];
+
+    for (int i = 1; i < str.length(); i++)
+    {
+        char ch1 = str[i - 1];
+        char ch2 = str[i];
+        ans += to_string(ch2 - ch1) ;
+        ans += ch2 ;
+    }
+
+    return ans;
+}
+vector<string> subseqe(string str){
+        vector<string> ans = " ";
+        for(int i = 0 ; i < str.length() ; i++){
+            char ch = str[i];
+            int size = ans.size();
+            for(int j = 0 ; j < size ; j++ ){
+                ans += ans[j] + ch;
+            }
+        }
+        return ans;
+    }
