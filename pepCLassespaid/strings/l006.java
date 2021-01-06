@@ -107,10 +107,63 @@ public class l006{
          
          System.out.println(ans);
     }
-
-    public static void main(String[] args) {
-        System.out.println();
-
+    public static boolean isprime(int n){
+        for(int i = 2 ; i*i <= n ; i++){
+            if(n % i == 0) return false;
+        }
+        return true;
+    }
+    public static void remprimes(ArrayList<Integer> al){
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int ele : al){
+            if(!isprime(ele)) ans.add(ele);
+        }
+        al.clear();
+        for(int ele : ans){
+            al.add(ele);
+        }       
     }
 
+    public static ArrayList<Integer> allPrimes(int n) {
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 2; i * i <= n; i++) {
+            if (isprime(i))
+                list.add(i);
+        }
+        return list;
+    }
+
+    public static void powerForm(int num, ArrayList<Integer> list) {
+        System.out.print(num + " -> ");
+        int idx = 0;
+        while (idx < list.size() && num > 1) {
+            int count = 0;
+            while (num % list.get(idx) == 0 && num > 1) {
+                num /= list.get(idx);
+                count++;
+            }
+
+            if (count > 0)
+                System.out.print(list.get(idx) + "^" + count + " ");
+            idx++;
+        }
+
+        if (num > 1)
+            System.out.print(num + "^" + 1 + " ");
+        System.out.println();
+    }
+
+    public static void exponForm(int[] query) {
+        ArrayList<Integer> list = allPrimes(1000000);
+        // System.out.println(list);
+        for (int ele : query) {
+            powerForm(ele, list);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 11, 97, 197, 339, 55, 498, 44, 39, 454545, 23, 2312, 676, 256, 555, 222222 };
+        exponForm(arr);
+
+    }
 }
