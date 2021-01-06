@@ -89,6 +89,28 @@ public class l006{
         }
         return ans;
     }
-    
+    public static void permutations(String str) {
+        ArrayList<String> ans = new ArrayList<>();
+        ans.add("");
+         for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            ArrayList<String> myAns = new ArrayList<>();
+            
+            for(String s : ans){
+                for(int j=0;j<=s.length();j++){
+                    myAns.add(s.substring(0,j) + ch + s.substring(j));
+                }
+            }
+            
+            ans = myAns;
+         }
+         
+         System.out.println(ans);
+    }
+
+    public static void main(String[] args) {
+        System.out.println();
+
+    }
 
 }
