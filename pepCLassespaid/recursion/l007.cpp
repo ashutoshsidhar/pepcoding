@@ -140,6 +140,60 @@ int LastIndex(int arr[], int idx, int x, int n)
     }
     else return LI ;
 }
+int lastIndex2(int arr[], int idx, int x, int n)
+{
+    if (idx == -1)
+        return -1;
+
+    if (arr[idx] == x)
+        return idx;
+    return lastIndex2(arr, idx - 1, x, n);
+}
+bool ispalindrome(int arr[],int str,int endr ){
+    if(str >= endr){
+        return true;
+    }
+    if(arr[str] != arr[endr]){ return false;}
+    return ispalindrome(arr,str + 1 , endr - 1);
+}
+void reverse(int arr[],int si , int ei){
+    if(si > ei) return;
+    int temp = arr[si];
+    arr[si] = arr[ei];
+    arr[ei] = temp;
+    reverse(arr,si + 1, ei - 1);
+   
+}
+void inverse(int arr[], int idx){
+    if(idx == arr.size()) return;
+    int val = arr[idx];
+    inverse(arr, idx + 1);
+    arr[val] = idx ;
+}
+long stringToNumber(string str, int idx, long pow)
+{
+    if (idx == -1)
+        return 0;
+    long recAns = stringToNumber(str, idx - 1, pow * 10);
+    return recAns + (str[idx] - '0') * pow;
+}
+
+bool PlaindromeOfString(string str, int i, int j)
+{
+    if (i >= j)
+        return true;
+
+    char ch1 = str[i];
+    char ch2 = str[j];
+
+    int diff1 = (ch1 >= 'A' && ch1 <= 'Z') ? ch1 - 'A' : ch1 - 'a';
+    int diff2 = (ch2 >= 'A' && ch2 <= 'Z') ? ch2 - 'A' : ch2 - 'a';
+
+    if (diff1 != diff2)
+        return false;
+    return PlaindromeOfString(str, i + 1, j - 1);
+}
+
 int main()
 {
     int n,d;
