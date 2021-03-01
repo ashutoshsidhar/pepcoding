@@ -147,5 +147,64 @@ public class questions {
    
    
   }
+  // Add 2 lists recursive method
+  public static int addTwoLists(Node FH, Node SH, int FS, int SS, LinkedList res){
+      if(FH == null && SH == null){
+        return 0;
+      }
+
+      int carry = 0;
+      int data = 0;
+      if(FS > SS){
+        carry = addTwoLists(FH.next, SH, FS - 1, SS, res);
+        data = carry + FH.data;
+      } else if(FS < SS){
+        carry = addTwoLists(FH, SH.next, FS, SS - 1, res);
+        data = carry + SH.data;
+      } else {
+        carry = addTwoLists(FH.next, SH.next, FS - 1, SS - 1, res);
+        data = carry + FH.data + SH.data;
+      }
+
+      carry = data / 10;
+      data = data % 10;
+
+      res.addFirst(data);
+      return carry;
+    }
+
+    public static LinkedList addTwoLists(LinkedList one, LinkedList two) {
+      LinkedList res = new LinkedList();
+
+      int carry = addTwoLists(one.head, two.head, one.size, two.size, res);
+      if(carry > 0){
+        res.addFirst(carry);
+      }
+
+      return res;
+    }
+    //add 2 lists reverse pi method
+    public static LinkedList addTwoLists(LinkedList one, LinkedList two) {
+      one.reversePI();
+      two.reversePI();
+      LinkedList Ans = new LinkedList();
+      Node c1 = one.head;
+      Node c2 = two.head;
+      int carry = 0;
+      while(c1 != null || c2 != null || carry != 0){
+          int sum = (c1 != null ? c1.data : 0) + (c2 != null ? c2.data : 0) + carry;
+          carry = sum / 10 ;
+          sum = sum % 10 ;
+          Ans.addFirst(sum);
+          if(c1 != null) c1 = c1.next;
+          if(c2 != null) c2 = c2.next;
+          
+      }
+      one.reversePI();
+      two.reversePI();
+      
+      return Ans;
+      
+    }
 
 }
