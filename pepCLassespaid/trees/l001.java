@@ -159,8 +159,7 @@ public class l001{
         return node; 
     }
 
-    public static void removeLeaves2(Node node,??){
-         
+    public static void removeLeaves2(Node node,??){    
     }
 
 }

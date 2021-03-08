@@ -1,0 +1,6 @@
+npm i fs             Installs FS in Folder
+npm init             Installs our Project
+npm install selenium-webdriver  INSTALLS SELENIUM webdriver
+npm install chromedriver        INSTALSS CHROME DRIVER      
+
+
