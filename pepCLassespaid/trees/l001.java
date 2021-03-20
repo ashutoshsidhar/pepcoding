@@ -81,7 +81,7 @@ public class l001{
     //     }
     // }
     public static boolean finddata(Node root, int data){
-        if (root = null) return false ;
+        if (root == null) return false ;
         boolean res = root.data == data ;
         return res || finddata(root.left,data) || finddata(root.right,data) ;
     }
@@ -132,7 +132,7 @@ public class l001{
         Node block = null;
         ArrayList<Integer> ans = new ArrayList<>();
         for (int i = 0; i < path.size(); i++) {
-            printAtDepthK(path.get(i), block, k - i, ans);
+            printAtKDepth(path.get(i), block, k - i, ans);
             block = path.get(i);
         }
 
@@ -159,7 +159,174 @@ public class l001{
         return node; 
     }
 
-    public static void removeLeaves2(Node node,??){    
+    public static void removeLeaves(Node node, Node par) {
+        if (node == null)
+            return;
+        if (node.left == null && node.right == null) {
+            if (par.left == node)
+                par.left = null;
+            else
+                par.right = null;
+
+            return;
+        }
+
+        removeLeaves(node.left, node);
+        removeLeaves(node.right, node);
     }
+
+    public static Node removeLeaves2(Node node) {
+        if (node.left == null && node.right == null)
+            return null;
+        removeLeaves(node, null);
+
+        return node;
+    }
+
+    public static Node prev = null;
+
+    public static boolean isBST(Node node) {
+        if (node == null)
+            return true;
+
+        boolean leftRes = isBST(node.left);
+        if (!leftRes)
+            return false;
+
+        if (prev != null && prev.data > node.data)
+            return false;
+        prev = node;
+
+        boolean rightRes = isBST(node.right);
+        if (!rightRes)
+            return false;
+
+        return true;
+    }
+
+    public static class isBSTSolPair {
+        int maxEle = -(int) 1e8;
+        int minEle = (int) 1e8;
+        boolean isBST = true;
+
+        boolean isBal = true;
+        int height = -1;
+
+        int largestBSTSize = 0;
+        Node largestBSTNode = null;
+
+        int totalNoOfBST = 0;
+    }
+
+    public isBSTSolPair isBST_(Node node) {
+        if (node == null) {
+            // isBSTSolPair base = new isBSTSolPair();
+            // return base;
+
+            return new isBSTSolPair();
+        }
+
+        isBSTSolPair left = isBST_(node.left);
+        isBSTSolPair right = isBST_(node.right);
+
+        isBSTSolPair myRes = new isBSTSolPair();
+        myRes.isBST = false;
+        if (left.isBST && right.isBST && left.maxEle < node.data && node.data < right.minEle) {
+            myRes.isBST = true;
+            myRes.maxEle = Math.max(node.data, right.maxEle);
+            myRes.minEle = Math.min(node.data, left.minEle);
+        }
+
+        return myRes;
+    }
+
+    public static class isBalPair {
+        int height = -1;
+        boolean balanceTree = true;
+    }
+
+    public static isBalPair isBal_(Node node) {
+        if (node == null)
+            return new isBalPair();
+
+        isBalPair left = isBal_(node.left);
+        if (!left.balanceTree)
+            return left;
+
+        isBalPair right = isBal_(node.right);
+        if (!right.balanceTree)
+            return right;
+
+        isBalPair myRes = new isBalPair();
+        myRes.balanceTree = false;
+        if (left.balanceTree && right.balanceTree && Math.abs(left.height - right.height) <= 1) {
+            myRes.balanceTree = true;
+            myRes.height = Math.max(left.height, right.height) + 1;
+        }
+
+        return myRes;
+    }
+
+    public static boolean isBal(Node node) {
+        isBalPair ans = isBal_(node);
+        return ans.balanceTree;
+    }
+
+    public static isBSTSolPair allsolution(Node node) {
+        if (node == null) {
+            return new isBSTSolPair();
+        }
+
+        isBSTSolPair left = allsolution(node.left);
+        isBSTSolPair right = allsolution(node.right);
+
+        isBSTSolPair ans = new isBSTSolPair();
+
+        ans.isBST = left.isBST && right.isBST && left.maxEle < node.data && node.data < right.minEle;
+        ans.isBal = left.isBal && right.isBal && Math.abs(left.height - right.height) <= 1;
+
+        ans.maxEle = Math.max(node.data, right.maxEle);
+        ans.minEle = Math.min(node.data, left.minEle);
+        ans.height = Math.max(left.height, right.height) + 1;
+
+        ans.totalNoOfBST = left.totalNoOfBST + right.totalNoOfBST + (ans.isBST ? 1 : 0);
+
+        if (ans.isBST) {
+            ans.largestBSTNode = node;
+            ans.largestBSTSize += left.largestBSTSize + right.largestBSTSize + 1;
+        } else {
+            if (left.largestBSTSize > right.largestBSTSize) {
+                ans.largestBSTNode = left.largestBSTNode;
+                ans.largestBSTSize = left.largestBSTSize;
+            } else {
+                ans.largestBSTNode = right.largestBSTNode;
+                ans.largestBSTSize = right.largestBSTSize;
+            }
+        }
+        return ans;
+    }
+    public static Node LCA(Node node, int p, int q) {
+        ArrayList<Node> list1 = new ArrayList<>();
+        ArrayList<Node> list2 = new ArrayList<>();
+
+        rootToNodePath(node, p, list1);
+        rootToNodePath(node, q, list2);
+
+        int i = list1.size() - 1;
+        int j = list2.size() - 1;
+
+        Node lca = null;
+        while (i >= 0 && j >= 0) {
+            if (list1.get(i) != list2.get(j))
+                break;
+
+            lca = list1.get(i);
+            i--;
+            j--;
+        }
+
+        return lca;
+    }
+    
 
 }
