@@ -166,12 +166,12 @@ public class l002{
            
     public static void main(String[] args){
         int r = scn.nextInt();
-        // pattern1(r);
-        // pattern2(r);
-        // pattern3(r);
-        // pattern4(r);
-        // pattern7(r);
-        // pattern8(r);
+        pattern1(r);
+        pattern2(r);
+        pattern3(r);
+        pattern4(r);
+        pattern7(r);
+        pattern8(r);
         pattern5(r);
         pattern6(r);
 
