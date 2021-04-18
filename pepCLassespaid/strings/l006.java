@@ -39,11 +39,11 @@ public class l006{
         return sb.toString();
     }
     public static String stringcomp1(String str){
+        int count = 1 ;
         if(str.length() <= 1) return str;
         StringBuilder sb = new StringBuilder();
         sb.append(str.charAt(0));
         for(int i = 1 ; i <= str.length() ; i++ ){
-            int count = 1;
             while( i < str.length() && str.charAt(i - 1) == str.charAt(i) ){
                 count ++ ;
                 i ++ ;
