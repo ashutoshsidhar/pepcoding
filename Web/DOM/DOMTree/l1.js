@@ -1,17 +1,15 @@
 <div>
     <span>
         <a></a>
-    </span>
-    <span>
+        <a></a>
         <a></a>
     </span>
     <div>
         <p></p>
-        <p>
-            <ul>
-                <li></li>
-                <li></li>
-            </ul>
-        </p>
+        <p></p>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
 </div>
