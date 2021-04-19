@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
+.container {
+    background-color: black;
+    color: bisque;
+}
+.container,
+.input-container,
+.heading1,
+.task-container{
+    border: 10px solid;
+}
+.heading1{
+    text-align: center;
+    color: red;
+}
+.input-container{
+    text-align: center;
+    margin-left: 450px;
+    font-size: 1.5rem;
+    height: 4rem;
+    height: 20vh;
+    width: 40%;
+}
+.task-container{
+    margin-top: 20px;
+    margin-left: 450px;
+    height: 80vh;
+    list-style: none;
+    background-color: brown;
+    width: 40%;
+}
