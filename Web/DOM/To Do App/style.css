@@ -19,18 +19,36 @@ body{
     color: red;
 }
 .input-container{
+    height: 20vh;
+    width: 100%;
+    padding-top: 40px;
+}
+.task-input {
     text-align: center;
-    margin-left: 450px;
     font-size: 1.5rem;
     height: 4rem;
-    height: 20vh;
-    width: 40%;
+    width: 30%;
+    margin: auto;
+    display: block;
 }
 .task-container{
-    margin-top: 20px;
-    margin-left: 450px;
     height: 80vh;
+}
+.task-list {
+    padding-left: 0;
+}
+.task-container li {
+    font-size: 1.5rem;
     list-style: none;
     background-color: brown;
     width: 40%;
+    text-align: center;
+    margin: 10px auto 0px auto;
+    height: 50px;
+}
+@media screen and (max-width: 768px){
+    .task-input,
+    .task-container li {
+        width: 70%;
+    }
 }
