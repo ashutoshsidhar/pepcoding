@@ -1,5 +1,5 @@
 const PS = new PerfectScrollbar("#cells", {
-    wheelSpeed: 12,
+    wheelSpeed: 1,
     wheelPropagation: true,
 });
 
@@ -43,11 +43,14 @@ $("#cells").scroll(function () {
 
 $(".input-cell").dblclick(function () {
     $(this).attr("contenteditable", "true");
+    $(this).addClass("editable");
     $(this).focus();
 });
 
 $(".input-cell").blur(function () {
     $(this).attr("contenteditable", "false");
+    $(this).removeClass("editable");
+
 });
 
 
@@ -72,7 +75,7 @@ $(".input-cell").click(function (e) {
 });
 
 function unselectCell(ele, e, topCell, bottomCell, leftCell, rightCell) {
-    if ( $(ele).attr("contenteditable") == "false") {
+    if ($(ele).attr("contenteditable") == "false") {
         if ($(ele).hasClass("top-selected")) {
             topCell.removeClass("bottom-selected");
         }
@@ -144,14 +147,15 @@ let startCellStored = false;
 let startCell;
 let endCell;
 $(".input-cell").mousemove(function (event) {
-    if (event.buttons == 1  && !event.ctrlKey) {
+    event.preventDefault();
+    if (event.buttons == 1 && !event.ctrlKey) {
         $(".input-cell.selected").removeClass("selected top-selected bottom-selected right-selected left-selected");
         mousemoved = true;
-        if(!startCellStored){
+        if (!startCellStored) {
             let [rowId, colId] = findRowCOl(event.target);
             startCell = { rowId: rowId, colId: colId };
             startCellStored = true;
-        } else{
+        } else {
             let [rowId, colId] = findRowCOl(event.target);
             endCell = { rowId: rowId, colId: colId };
             selectAllBetweenTheRange(startCell, endCell);
@@ -163,10 +167,50 @@ $(".input-cell").mousemove(function (event) {
 });
 
 function selectAllBetweenTheRange(start, end) {
-    for (let i = (start.rowId < end.rowId ? start.rowId : end.rowId) ; i <= (start.rowId < end.rowId ? end.rowId : start.rowId); i++) {
+    for (let i = (start.rowId < end.rowId ? start.rowId : end.rowId); i <= (start.rowId < end.rowId ? end.rowId : start.rowId); i++) {
         for (let j = (start.colId < end.colId ? start.colId : end.colId); j <= (start.colId < end.colId ? end.colId : start.colId); j++) {
             let [topCell, bottomCell, leftCell, rightCell] = getTopBottomLeftRightCell(i, j);
             selectCell($(`#row-${i}-col-${j}`)[0], {}, topCell, bottomCell, leftCell, rightCell, true);
         }
     }
 }
+$("#bold").click(function(e) {
+    if($(this).hasClass("selected")) {
+        $(this).removeClass("selected");
+        $(".input-cell.selected").each(function(index,ele){
+            $(ele).html(`${$(ele).text()}`);
+        });
+    } else {
+        $(this).addClass("selected");
+        $(".input-cell.selected").each(function(index,ele){
+            $(ele).html(`<b>${$(ele).text()}</b>`);
+        });
+    }
+});
+
+$("#italic").click(function(e) {
+    if($(this).hasClass("selected")) {
+        $(this).removeClass("selected");
+        $(".input-cell.selected").each(function(index,ele){
+            $(ele).html(`${$(ele).text()}`);
+        });
+    } else {
+        $(this).addClass("selected");
+        $(".input-cell.selected").each(function(index,ele){
+            $(ele).html(`<i>${$(ele).text()}</i>`);
+        });
+    }
+});
+$("#underline").click(function(e) {
+    if($(this).hasClass("selected")) {
+        $(this).removeClass("selected");
+        $(".input-cell.selected").each(function(index,ele){
+            $(ele).html(`${$(ele).text()}`);
+        });
+    } else {
+        $(this).addClass("selected");
+        $(".input-cell.selected").each(function(index,ele){
+            $(ele).html(`<u>${$(ele).text()}</u>`);
+        });
+    }
+});
