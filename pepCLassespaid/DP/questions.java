@@ -134,8 +134,76 @@ public class questions {
         int maxGold = 0;
         for(int i = 0 )
     }
-    public static int longestPalindromeSubseq(String s) {
-        
+     //leetcode 1035
+     public int maxUncrossedLines(int[] A, int[] B) {
+        int n = A.length;
+        int m = B.length;
+        int[][] dp = new int[n + 1][m + 1];
+
+        for (int i = 0; i <= n; i++){
+            for (int j = 0; j <= m; j++){
+                if(i == 0 || j == 0){
+                    dp[i][j] = 0 ;
+                    continue;
+                }
+                if (A[i - 1] == B[j - 1]){
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                }
+                else{
+                    dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j]);
+                }
+            }
+        }
+        return dp[n][m];
+    }
+    public int minDistance_memo(String word1, String word2,int i ,int j, int[][] dp) {
+        if(i == 0 || j == 0){
+            return dp[i][j] = (i == 0)? j : i ;
+         }
+         if(dp[i][j] != -1){
+             return dp[i][j];
+         }
+         int insert = minDistance_memo(word1, word2, i, j - 1, dp);
+         int replace = minDistance_memo(word1, word2, i - 1 , j - 1, dp);
+         int delete = minDistance_memo(word1, word2, i - 1 , j, dp);
+         if (word1.charAt(i - 1) == word2.charAt(j - 1)){
+            return dp[i][j] = replace;
+        }
+        else{
+            return dp[i][j] = Math.min(Math.min(insert,replace),delete) + 1;
+        }
+    }
+    public int minDistance(String s1, String s2){
+        int n = s1.length(), m = s2.length();
+        int[][] dp = new int[n + 1][m + 1];
+        for(int[] d : dp){
+            Arrays.fill(d, - 1);
+        }
+        return minDistance_memo(s1,s2,n,m,dp);
+    }
+    public int minDistance_tab(String word1, String word2) {
+        int n = word1.length();
+        int m = word2.length();
+        int[][] dp = new int[n + 1][m + 1];
+        for(int i = 0 ; i <=n ; i++){
+            for(int j = 0 ; j <=m ; j++){
+                if (i == 0 || j == 0) {
+                    dp[i][j] = (i == 0 ? j : i);
+                    continue;
+                }
+                 
+                 int insert = dp[i][j - 1];
+                 int replace = dp[i - 1][j - 1];
+                 int delete = dp[i - 1][j];
+                 if (word1.charAt(i - 1) == word2.charAt(j - 1)){
+                    dp[i][j] = replace;
+                }
+                else{
+                    dp[i][j] = Math.min(Math.min(insert,replace),delete) + 1;
+                }
+            }
+        }
+        return dp[n][m];
     }
     public static void main(String[] args){
         FreindsPairing();
