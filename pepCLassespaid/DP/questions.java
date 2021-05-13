@@ -204,6 +204,64 @@ public class questions {
             }
         }
         return dp[n][m];
+        // https://www.geeksforgeeks.org/edit-distance-and-lcs-longest-common-subsequence/?ref=rp
+    // where we are allowed only two operations insert and delete, find edit
+    // distance in this variation.
+
+    public static int LCSS(String s1, String s2) {
+        int N = s1.length(), M = s2.length();
+        int[][] dp = new int[N + 1][M + 1];
+        for (int n = 0; n <= N; n++) {
+            for (int m = 0; m <= M; m++) {
+
+                if (n == 0 || m == 0) {
+                    dp[n][m] = 0;
+                    continue;
+                }
+
+                if (s1.charAt(n - 1) == s2.charAt(m - 1))
+                    dp[n][m] = dp[n - 1][m - 1] + 1;
+                else
+                    dp[n][m] = Math.max(dp[n - 1][m], dp[n][m - 1]);
+            }
+        }
+
+        return dp[N][M];
+    }
+
+    public static void editDistanceVariation(String s1, String s2) {
+        int n = s1.length(), m = s2.length();
+        int LCSS = LCSS(s1, s2);
+
+        int ans = (n - LCSS) + (m - LCSS);
+    }
+
+    // https://practice.geeksforgeeks.org/problems/minimum-deletitions1648/1
+    public static int LPSS(String str, int I, int J, int[][] dp) {
+        int n = str.length();
+        for (int gap = 0; gap < n; gap++) {
+            for (int i = 0, j = gap; j < n; i++, j++) {
+                if (i >= j) {
+                    dp[i][j] = (i == j) ? 1 : 0;
+                    continue;
+                }
+
+                if (str.charAt(i) == str.charAt(j))
+                    dp[i][j] = dp[i + 1][j - 1] + 2;// LPSS(str, i + 1, j - 1, dp) + 2;
+                else
+                    dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+            }
+        }
+
+        return dp[I][J];
+    }
+
+    public static void minDeleteToMakePlaindrome(String str) {
+        int n = str.length();
+        int[][] dp = new int[n][n];
+
+        int ans = n - LPSS(str, 0, n - 1, dp);
+    }
     }
     public static void main(String[] args){
         FreindsPairing();
