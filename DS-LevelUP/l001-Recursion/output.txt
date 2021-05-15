@@ -1,0 +1,29 @@
+Permutation with infinite coins :
+22222
+2233
+2323
+2332
+235
+253
+3223
+3232
+325
+3322
+352
+37
+523
+532
+55
+73
+16
+Combination with infinite coins :
+22222
+2233
+235
+37
+55
+5
+Combination with Single coin :
+235
+37
+2

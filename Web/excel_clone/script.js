@@ -469,13 +469,6 @@ function addSheetTabEventListeners() {
             })
             });
         }
-        $(".left-scroller").click(function (e){
-            let keysArray = Object.keys(cellData);
-            let selectedSheetIndex = keysArray.indexOf(selectedSheet)
-            if(selectedSheetIndex != 0){
-                selectSheet($(".sheet-tab.selected").prev()[0]);
-            }
-        });
         if (!$(this).hasClass("selected")) {
             selectSheet(this);
         }
@@ -508,3 +501,21 @@ function renameSheet() {
         `);
     }
 }
+$(".left-scroller").click(function (e) {
+
+    let keysArray = Object.keys(cellData);
+    let selectedSheetIndex = keysArray.indexOf(selectedSheet);
+    if (selectedSheetIndex != 0) {
+        selectSheet($(".sheet-tab.selected").prev()[0]);
+    }
+    $(".sheet-tab.selected")[0].scrollIntoView();
+});
+
+$(".right-scroller").click(function (e) {
+    let keysArray = Object.keys(cellData);
+    let selectedSheetIndex = keysArray.indexOf(selectedSheet);
+    if (selectedSheetIndex != (keysArray.length - 1)) {
+        selectSheet($(".sheet-tab.selected").next()[0]);
+    }
+    $(".sheet-tab.selected")[0].scrollIntoView();
+})
