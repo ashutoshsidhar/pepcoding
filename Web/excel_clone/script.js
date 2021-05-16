@@ -518,4 +518,4 @@ $(".right-scroller").click(function (e) {
         selectSheet($(".sheet-tab.selected").next()[0]);
     }
     $(".sheet-tab.selected")[0].scrollIntoView();
-})
+});
