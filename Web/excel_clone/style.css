@@ -147,6 +147,7 @@ body {
     width: 25px;
     height: 25px;
     border: 1px solid lightgray;
+    cursor: nw-resize;
 }
 
 #columns {
@@ -155,6 +156,7 @@ body {
     border: 1px solid lightgray;
     display: flex;
     overflow: hidden;
+    cursor: s-resize;
 }
 
 #rows {
@@ -162,6 +164,7 @@ body {
     height: calc(75vh - 25px);
     border: 1px solid lightgray;
     overflow: hidden;
+    cursor: w-resize;
 }
 
 #cells {
@@ -169,6 +172,7 @@ body {
     height: calc(75vh - 25px);
     width: calc(100vw - 25px);
     border: 1px solid lightgray;
+    cursor : cell;
     overflow: scroll;
 }
 
@@ -260,13 +264,15 @@ body {
     display: flex;
     align-items: center;
     overflow:hidden;
+    color: #444;
 }
 
 .sheet-tab-container {
+    max-width: 598px;
     margin-right: 10px;
     display: flex;
     border-left: 0.5px solid lightgray;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .sheet-tab {
@@ -388,14 +394,14 @@ body {
     align-items: center;
 }
 
-.ok-button, .delete-button {
+.ok-button, .delete-button, .save-button{
     background-color: #217346;
     color: #fff;
     height: 40px;
     border-radius: 3px;
 }
 
-.ok-button:hover {
+.ok-button:hover,.save-button:hover  {
     font-weight: bold;
     cursor: pointer;
     transform: scale(1.2);
@@ -452,4 +458,78 @@ body {
 .sheet-tab-container {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.file-modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 0vw;
+    display: flex;
+}
+.file-opitons-modal{
+    width: 12rem;
+    background-color: #217346;
+    height: 100%;
+    color: #fff;
+}
+.file-recent-modal{
+    padding-top: 20px;
+    background-color: #fff;
+    height: 100%;
+    width: calc(50% - 12rem);
+}
+.recent-files,.recent-file-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.recent-file-name:hover{
+    background-color: lightgrey;
+    cursor: pointer;
+
+}
+.close,.new,.open,.save {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    font-size: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+} 
+.close-icon,.new-icon,.save-icon,.open-icon{
+    position: absolute;
+    left: 2rem;
+}
+.close {
+    margin-top:20px;
+    margin-bottom: 20px;
+    
+}
+.close-icon{
+    transform: rotate(90deg);
+}
+.close:hover,.new:hover,.open:hover,.save:hover{
+    background-color: #1d613c;
+    cursor: pointer;
+}
+.file-transparent-modal{
+    width: 50%;
+    height: 100%;
+}
+.input-cell.cutcopy {
+    border: 2px dashed #217346;
+    animation: mymove 500ms infinite;
+}
+@keyframes mymove {
+    50% {border: 3px dashed #217346;
+  }
 }
