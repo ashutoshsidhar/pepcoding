@@ -398,6 +398,8 @@ public class l002_RecursionTree{
         System.out.println(queenPermutation2D(boxes, 4, 0, ""));
     }
 
+
+
     public static void main(String[] args) {
         queenSet();
 
