@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas POC 1</title>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    canvas{
+        display: block;
+       
+    }
+</style>
+<body>
+    <canvas></canvas>
+</body>
+<script>
+    let canvas = document.querySelector("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight; 
+    let ctx = canvas.getContext("2d");
+    // let movenotNoted = false;
+    // canvas.addEventListener("mousemove", function(e){
+    //     if(e.buttons == 1){
+    //         if(!movenotNoted){
+    //             ctx.beginPath();
+    //             ctx.moveTo(e.pageX,e.pageY);
+    //             ctx.strokeStyle = "blue";
+    //             ctx.lineWidth = 5;
+    //             movenotNoted = true;
+    //         }else {
+    //             ctx.lineTo(e.pageX,e.pageY);
+    //             ctx.stroke();
+    //         }
+    //     }
+    //     else{
+    //         movenotNoted = false;
+    //     }
+    // })
+    let startPoint;
+    canvas.addEventListener("mousemove", function(e){
+        if(e.buttons == 1){
+            if(startPoint){
+                ctx.beginPath();
+                ctx.strokeStyle = "blue";
+                ctx.lineWidth = 5;
+                let w = e.pageX - startPoint[0];
+                let h = e.pageY - startPoint[1];
+                ctx.clearRect(startPoint[0] - 1 , startPoint[1] - 1, w, h);
+                ctx.strokeRect(startPoint[0],startPoint[1],w,h);
+            }else {
+                startPoint = [e.pageX,e.pageY];
+            }
+        }
+        else{
+            startPoint = undefined;
+        }
+    })
+    
+
+    // ctx.strokeRect(10,30,800,500);
+
+    // ctx.beginPath();
+    // ctx.moveTo(50,50);
+    // ctx.strokeStyle = "blue";
+    // ctx.lineWidth = 5 ;
+    // ctx.lineTo(150,50);
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.strokeStyle = "black";
+    // ctx.lineWidth = 1 ;
+    // // ======================================
+    // ctx.strokeRect(20,40,20,20);
+    // // ======================================
+    // ctx.beginPath();
+    // ctx.moveTo(15,45);
+    // ctx.strokeStyle = "blue";
+    // ctx.lineWidth = 1 ;
+    // ctx.lineTo(25,55)
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.moveTo(25,55);
+    // ctx.strokeStyle = "red";
+    // ctx.lineWidth = 1 ;
+    // ctx.lineTo(45,35)
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.strokeStyle = "black";
+    // ctx.lineWidth = 1 ;
+    // // ======================================
+    // ctx.strokeRect(20,70,20,20);
+    // // ======================================
+    // ctx.beginPath();
+    // ctx.moveTo(15,75);
+    // ctx.strokeStyle = "green";
+    // ctx.lineWidth = 1 ;
+    // ctx.lineTo(25,85)
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.moveTo(25,85);
+    // ctx.strokeStyle = "green";
+    // ctx.lineWidth = 1 ;
+    // ctx.lineTo(45,65)
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.strokeStyle = "black";
+    // ctx.lineWidth = 1 ;
+    // // ======================================
+    // ctx.strokeRect(20,100,20,20);
+    // ctx.beginPath();
+    // ctx.moveTo(15,95);
+    // ctx.strokeStyle = "red";
+    // ctx.lineWidth = 1 ;
+    // ctx.lineTo(45,125)
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.moveTo(15,125);
+    // ctx.strokeStyle = "red";
+    // ctx.lineWidth = 1 ;
+    // ctx.lineTo(45,95)
+    // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.strokeStyle = "black";
+    // ctx.lineWidth = 1 ;
+    // // ======================================
+    // ctx.strokeRect(20,130,20,20);
+    // ctx.beginPath();
+    // ctx.fillText("yes",22,142,140)
+    // ctx.stroke();
+    // ctx.strokeStyle = "black";
+    // ctx.lineWidth = 1 ;
+    // // ======================================
+    // ctx.strokeRect(20,160,20,20);
+    // ctx.beginPath();
+    // ctx.fillText("no",25,172,170)
+    // ctx.stroke();
+    // ctx.strokeStyle = "black";
+    // ctx.lineWidth = 1 ;
+    // // =====================================
+    // ctx.beginPath();
+    // ctx.strokeStyle = "black";
+    // ctx.lineWidth = 1 ;
+    // ctx.arc(30, 200, 10, 0, 2 * Math.PI);
+    // ctx.fillStyle = "grey";
+    // ctx.stroke();
+
+</script>
+</html>

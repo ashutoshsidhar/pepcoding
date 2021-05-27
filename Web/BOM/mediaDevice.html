@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Devices</title>
+    <style>
+        video{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay controls></video>
+    <audio autoplay controls></audio>
+    <script>
+        let audioPlayer = document.querySelector("audio");
+        let videoPlayer = document.querySelector("video");
+        let userpromise = navigator.mediaDevices.getUserMedia({video: true,audio:true});
+        userpromise.then(function(mediastream){
+            videoPlayer.srcObject = mediastream;
+            audioPlayer.srcObject = mediastream;
+        });
+      
+    </script>
+</body>
+</html>
