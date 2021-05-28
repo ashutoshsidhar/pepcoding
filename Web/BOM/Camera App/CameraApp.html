@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Camera</title>
 </head>
 <body>
@@ -15,9 +17,8 @@
         
     </div> 
 
-    <button id = "record-video">Record</button>
-    <button id = "click-picture">Capture</button>
-    <button id = "remove-filter">Remove Filter</button>
+    <div class="material-icons record-video" id = "record-video">video_camera_front</div>
+    <div class="material-icons click" id = "click-picture">camera</div>
     <div class="filter-container">
         <div style="background-color: #f4a2613d;" class="filter"></div>
         <div style="background-color: #e85d0440;" class="filter"></div>
@@ -26,6 +27,7 @@
         <div style="background-color: #4caf4f31;" class="filter"></div>
     </div>
     
+    <div class="material-icons remove-filter" id = "remove-filter">filter_center_focus</div>
     <script src="script.js"></script>
 </body>
 </html>

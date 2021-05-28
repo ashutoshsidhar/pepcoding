@@ -14,17 +14,23 @@ body {
     display: flex;
     justify-content: center;
 }
-
+video{
+    border: 5px solid white;
+}
 #record-video {
+    color:white;
     position: fixed;
     right: 6rem;
     top: 36vh;
+    font-size: 40px;
 }
 
 #click-picture {
+    color:white;
     position: fixed;
     right: 6rem;
     top: 50vh;
+    font-size: 40px;
 }
 
 video {
@@ -46,6 +52,9 @@ video {
     height: 20%;
 
 }
+.filter:hover{
+    transform: scale(1.2);
+}
 
 .filter-screen-parent {
     display: flex;
@@ -56,7 +65,13 @@ video {
     top: 0
 }
 #remove-filter{
+    font-size: 40px;
+    color:white;
     top:  90vh;
     left: 5vw;
     position: fixed;
+}
+#remove-filter:hover,#click-picture:hover,#record-video:hover{
+    cursor: pointer;
+    transform: scale(1.2);
 }
