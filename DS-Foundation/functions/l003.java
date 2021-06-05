@@ -40,7 +40,7 @@ public class l003{
             long ld = sum % 2;
             carry = sum / 2;
             res += ld * power ;
-            power *= 10 ;
+            power *= 10 
         }
         
         return res ;

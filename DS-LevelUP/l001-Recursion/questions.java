@@ -313,4 +313,17 @@ public class questions {
 
         return res;
     }
+    public static int divsum(int[] arr,int idx,int sum1 , String s1,int sum2 , String s2){
+        if(idx == arr.length){
+            if(sum1 == sum2){
+                System.out.println(s1 + "=" + s2);
+                return 1;
+            }
+            return 0;
+        }
+        int count = 0 ;
+        count += divsum(arr, idx + 1, sum1 + arr[idx], s1 + arr[idx], sum2, s2);
+        count += divsum(arr, idx + 1, sum1, s1, sum2 + arr[idx], s2 + arr[idx]);
+        return count;
+    }
 }

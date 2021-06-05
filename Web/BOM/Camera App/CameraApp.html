@@ -10,13 +10,18 @@
     <title>Camera</title>
 </head>
 <body>
-        <div class="video-container">
-            <video autoplay></video>
+    <div class="video-container">
+        <div class="frame" style="overflow: hidden; height: 100%;">
+            <video style="height: 100%;" autoplay></video>
         </div>
+    </div>
     <div class="filter-screen-parent">
         
     </div> 
-
+    <!-- <div class="frame-screen-parent">
+        <img src="https://lh3.googleusercontent.com/proxy/r7xOOKcxY8Qp1dk4sSFyL9Jwyqe7q_VYpwx-wBUbJP11qpFV-V5uDoLWUTAFxYClTGAlJCXM2O4CcWG_1Aq3yuAMm62V8P5DG_9zwWLmIok5sr9qdsqHDMKbFQ"/>
+        
+    </div> -->
     <div class="material-icons record-video" id = "record-video">video_camera_front</div>
     <div class="material-icons click" id = "click-picture">camera</div>
     <div class="filter-container">
@@ -28,6 +33,23 @@
     </div>
     
     <div class="material-icons remove-filter" id = "remove-filter">filter_center_focus</div>
+    <div class = "zoom">
+        <div class="material-icons zoom-in">zoom_in</div>
+        <div class="material-icons zoom-out">zoom_out</div>
+    </div>
+    <div class="timer">
+        <div class="material-icons recording-status">radio_button_unchecked</div>
+        <span class="minute">00</span>:<span class="second">00</span>
+    </div>
+    <div class="material-icons show-gallery">collections</div>
+    <!-- <div class="modal">
+        <div class="title">
+            <span style="margin-top: 10px; display: inline-block;">Gallery</span>
+            <span style="float: right; margin-top: 10px; margin-right: 20px; cursor: pointer;"class="material-icons close">close</span>
+        </div>
+        <div class="gallery"></div>
+    </div> -->
+    <script src="dbScript.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

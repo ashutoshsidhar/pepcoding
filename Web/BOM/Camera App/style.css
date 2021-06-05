@@ -14,9 +14,12 @@ body {
     display: flex;
     justify-content: center;
 }
-video{
+.frame{
     border: 5px solid white;
+
 }
+/* video{
+} */
 #record-video {
     color:white;
     position: fixed;
@@ -64,6 +67,14 @@ video {
     position: fixed;
     top: 0
 }
+/* .frame-screen-parent {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0
+} */
 #remove-filter{
     font-size: 40px;
     color:white;
@@ -71,7 +82,66 @@ video {
     left: 5vw;
     position: fixed;
 }
-#remove-filter:hover,#click-picture:hover,#record-video:hover{
+#remove-filter:hover,#click-picture:hover,#record-video:hover,.zoom-out:hover,.zoom-in:hover,.close:hover,.show-gallery:hover{
     cursor: pointer;
     transform: scale(1.2);
+}
+.zoom {
+    position: absolute;
+    font-size: 40px;
+    bottom: 30px;
+    left: 50vw;
+    color:white;
+}
+.zoom-in,.zoom-out{
+    font-size: 40px;
+
+}
+.modal {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    color: black;
+    background-color: white;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.show-gallery {
+    position: fixed;
+    height: 60px;
+    width: 60px;
+    bottom: 10vh;
+    right: 5vw;
+    font-size: 40px;
+    color: white;
+}
+
+.timer {
+    position: fixed;
+    bottom: 4vh;
+    right: 20vw;
+    color: red;
+    
+    font-size: 20px;
+}
+.gallery {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    height: calc(100vh - 50px);
+}
+
+.image img, .video video {
+    height: 31vh;
+    width: 21vw;
+    margin-top: 10px;
+    border: 2px solid black;
+}
+
+.title {
+    margin-bottom: 10px;
 }
