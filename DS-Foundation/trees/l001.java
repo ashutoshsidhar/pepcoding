@@ -132,7 +132,7 @@ public class l001{
         Node block = null;
         ArrayList<Integer> ans = new ArrayList<>();
         for (int i = 0; i < path.size(); i++) {
-            printAtKDepth(path.get(i), block, k - i, ans);
+            printAtKDepth(path.get(i), k - i,block ,ans);
             block = path.get(i);
         }
 
